@@ -7,22 +7,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "clients")
+@Table(name = "applications")
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client {
+public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long Id;
-    @Column(name = "email", unique = true)
-    private String email;
-    @Column(name = "password", length = 1000)
-    private String password;
-    @Column(name = "haveEvent")
-    private boolean haveBuy;
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "comments")
+    private String comments;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 }
