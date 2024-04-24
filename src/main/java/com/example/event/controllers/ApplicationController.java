@@ -15,7 +15,7 @@ import java.util.List;
 public class ApplicationController {
     private final ApplicationService applicationService;
 
-    @PostMapping
+    @PostMapping("create/application")
     public ResponseEntity<Application> create(@RequestBody ApplicationDTO dto){
         return new ResponseEntity<>(applicationService.create(dto), HttpStatus.OK);
     }

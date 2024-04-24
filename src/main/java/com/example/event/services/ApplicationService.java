@@ -19,7 +19,7 @@ public class ApplicationService {
                 .name(dto.getName())
                 .phone(dto.getPhone())
                 .comments(dto.getComments())
-                .client(clientService.readById(dto.getClientId()))
+                //.client(clientService.readById(dto.getClientId()))
                 .dateOfCreated(dto.getDateOfCreated())
                 .build());
 
