@@ -1,9 +1,9 @@
 package com.example.event.dto;
 
 import lombok.Data;
-//это дял передачи данныхв запрос
+
 @Data
-public class ClientDTO {
+public class AdminDTO {
     private String email;
     private String password;
 }

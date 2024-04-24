@@ -16,7 +16,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long Id;
+    private Long id;
     @Column(name = "email", unique = true)
     private String email;
     @Column(name = "password", length = 1000)

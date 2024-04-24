@@ -48,10 +48,7 @@
 <div class="reg">
     <h2>Регистрация</h2>
     <form>
-        <div class="mb-3">
-            <label for="name" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="name" placeholder="Введите имя">
-        </div>
+
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Введите email">

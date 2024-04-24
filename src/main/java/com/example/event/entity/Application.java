@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Table(name = "applications")
 @Entity
@@ -16,7 +18,7 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long Id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "phone")
@@ -26,4 +28,9 @@ public class Application {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+    private LocalDateTime dateOfCreated;
+    @PrePersist//указывается что метод выаолняется перед сохранением сущности
+    private void init() {
+        dateOfCreated = LocalDateTime.now();
+    }
 }
