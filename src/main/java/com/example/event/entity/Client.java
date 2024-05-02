@@ -6,13 +6,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @Table(name = "clients")
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client {
+public class Client  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,4 +31,10 @@ public class Client {
     private boolean haveBuy;
     @Column(name = "active")
     private boolean active;
+    @ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "client_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Roles> roles = new HashSet<>();
+        private LocalDateTime dateOfCreated;
 }
