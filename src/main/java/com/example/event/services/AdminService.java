@@ -27,6 +27,11 @@ public class AdminService {
                 .build());
     }
 
+    public Long checkIfExistAdmin(ClientDTO dto){
+        if( adminRepository.findByEmail(dto.getEmail())==null)
+            return null;
+        else return  adminRepository.findByEmail(dto.getEmail()).getId();
+    }
     public List<Admin> readAll() {
         return adminRepository.findAll();
     }

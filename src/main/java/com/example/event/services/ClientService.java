@@ -1,5 +1,6 @@
 package com.example.event.services;
 
+import com.example.event.dto.AdminDTO;
 import com.example.event.dto.ClientDTO;
 import com.example.event.entity.Application;
 import com.example.event.entity.Client;
@@ -23,6 +24,11 @@ public class ClientService {
                 .haveBuy(false)
                 .build());
 
+    }
+    public Long checkIfExistClient(ClientDTO dto){
+        if( clientRepository.findByEmail(dto.getEmail())==null)
+            return null;
+        else return  clientRepository.findByEmail(dto.getEmail()).getId();
     }
     public List<Client> readAll() {
         return clientRepository.findAll();
