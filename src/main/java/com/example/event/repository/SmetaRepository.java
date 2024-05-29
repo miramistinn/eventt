@@ -1,11 +1,9 @@
 package com.example.event.repository;
 
-import com.example.event.entity.Rejected;
+import com.example.event.entity.Smeta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.nio.file.FileStore;
-
 @Repository
-public interface RejectedRepository extends JpaRepository<Rejected, Long> {
+public interface SmetaRepository extends JpaRepository<Smeta, Long> {
 }

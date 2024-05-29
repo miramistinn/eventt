@@ -18,7 +18,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client  {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,7 +28,7 @@ public class Client  {
     @Column(name = "password", length = 1000)
     private String password;
     @Column(name = "haveEvent")
-    private boolean haveBuy;
+    private boolean haveEvent;
     @Column(name = "active")
     private boolean active;
     @ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
@@ -36,5 +36,10 @@ public class Client  {
             joinColumns = @JoinColumn(name = "client_id"))
     @Enumerated(EnumType.STRING)
     private Set<Roles> roles = new HashSet<>();
-        private LocalDateTime dateOfCreated;
+    private LocalDateTime dateOfCreated;
+
+    @PrePersist//указывается что метод выаолняется перед сохранением сущности
+    private void init() {
+        dateOfCreated = LocalDateTime.now();
+    }
 }

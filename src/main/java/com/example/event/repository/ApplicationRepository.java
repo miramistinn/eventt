@@ -11,4 +11,5 @@ import java.util.List;
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
    // List<Buy> findByEmail(String email);
     List<Application> findByClient_Id(Long id);
+
 }

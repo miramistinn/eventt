@@ -11,5 +11,7 @@ public class ApplicationDTO {
     private String phone;
     private String comments;
     private Long clientId;
+    private String status;
+    private String source;
     private LocalDateTime dateOfCreated;
 }

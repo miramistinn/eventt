@@ -17,13 +17,28 @@ public class ApplicationController {
 
     @PostMapping("create/application")
     public ResponseEntity<Application> create(@RequestBody ApplicationDTO dto){
-        return new ResponseEntity<>(applicationService.create(dto), HttpStatus.OK);
+       dto.setSource("сайт");
+       return new ResponseEntity<>(applicationService.create(dto), HttpStatus.OK);
     }
-
-    @GetMapping
+    @PostMapping("create/application/admin")
+    public ResponseEntity<Application> createAdmin(@RequestBody ApplicationDTO dto){
+        return new ResponseEntity<>(applicationService.createAdmin(dto), HttpStatus.OK);
+    }
+    @GetMapping("application/readAll")
     public ResponseEntity<List<Application>> readAll(){
         return new ResponseEntity<>(applicationService.readAllApplication(), HttpStatus.OK);
     }
+    @GetMapping("application/readByEmail")
+    public ResponseEntity<List<Application>> readByEmail(){
+        return new ResponseEntity<>(applicationService.readByEmail(), HttpStatus.OK);
+    }
+    @PostMapping("application/readByID/{id}")
+    public ResponseEntity<Application> readById(@PathVariable Long id){
+        System.out.println(id);
+        System.out.println("dfjghdfhgslhfwlehflhef");
+        return new ResponseEntity<>(applicationService.readById(id), HttpStatus.OK);
+    }
+
     @PutMapping
     public ResponseEntity<Application> update(@RequestBody Application application){
         return new ResponseEntity<>(applicationService.update(application), HttpStatus.OK);

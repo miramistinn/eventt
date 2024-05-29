@@ -4,6 +4,7 @@ import com.example.event.dto.AdminDTO;
 import com.example.event.dto.ClientDTO;
 import com.example.event.entity.Application;
 import com.example.event.entity.Client;
+import com.example.event.entity.User;
 import com.example.event.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class ClientService {
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .active(true)
-                .haveBuy(false)
+                .haveEvent(false)
                 .build());
 
     }
@@ -36,5 +37,22 @@ public class ClientService {
     public Client readById(Long id) {
         return clientRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Client is not found - " + id));
+    }
+    public Client readByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
+    public void clientHadApp(){
+        User user = User.getInstance();
+        clientRepository.findByEmail(user.getEmail()).setHaveEvent(true);
+
+    }
+    public Long checkIfBun(ClientDTO dto){
+        if( !clientRepository.findByEmail(dto.getEmail()).isActive())
+            return null;
+        else return  clientRepository.findByEmail(dto.getEmail()).getId();
+    }
+
+    public boolean haveBuy(String email){
+        return  clientRepository.findByEmail(email).isHaveEvent();
     }
 }

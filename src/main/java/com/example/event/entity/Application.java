@@ -25,6 +25,10 @@ public class Application {
     private String phone;
     @Column(name = "comments")
     private String comments;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "source")
+    private String source;
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;

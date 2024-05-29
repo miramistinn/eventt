@@ -35,4 +35,9 @@ public class Admin{
     private Set<Roles> roles = new HashSet<>();
     private LocalDateTime dateOfCreated;
 
+    @PrePersist//указывается что метод выаолняется перед сохранением сущности
+    private void init() {
+        dateOfCreated = LocalDateTime.now();
+    }
+
 }

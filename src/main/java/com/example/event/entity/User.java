@@ -1,12 +1,12 @@
 package com.example.event.entity;
 
 public class User {
-    private Long id;
+    private String email;
     private boolean isAdmin;
 
     private static User instance;
-    private User(Long id, boolean isAdmin) {
-        this.id = id;
+    private User(String email, boolean isAdmin) {
+        this.email = email;
         this.isAdmin = isAdmin;
     }
 
@@ -14,19 +14,19 @@ public class User {
         if (instance == null) {
             synchronized (User.class) {
                 if (instance == null) {
-                    instance = new User(0L, false);
+                    instance = new User("", false);
                 }
             }
         }
         return instance;
     }
 
-    public Long getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isAdmin() {
