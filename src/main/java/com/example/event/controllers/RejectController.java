@@ -3,15 +3,15 @@ package com.example.event.controllers;
 import com.example.event.dto.ClientDTO;
 import com.example.event.dto.RejectDTO;
 import com.example.event.entity.Application;
+import com.example.event.entity.Rejected;
 import com.example.event.services.ApplicationService;
 import com.example.event.services.RejectService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -37,6 +37,12 @@ public class RejectController {
         System.out.println(dto.getCommentByAdmin());
         rejectService.rejected(dto);
         return HttpStatus.OK;
+    }
+
+    @GetMapping("application/reject/readAll")
+    public ResponseEntity<List<Rejected>> readAll(){
+        System.out.println("пришло на сервер");
+        return new ResponseEntity<>(rejectService.readAllRejected(), HttpStatus.OK);
     }
 
 }

@@ -19,8 +19,11 @@ public class Smeta {
     private Long id;
     @Column(name = "category")
     private String category;
+    @Column(name = "name")
+    private String name;
     @Column(name = "expenses")
-    private String expenses;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Double expenses;
+    @ManyToOne
+    @JoinColumn(name = "treatment_id")
     private Treatment treatment;
 }

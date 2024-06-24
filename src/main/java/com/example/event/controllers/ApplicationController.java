@@ -17,7 +17,7 @@ public class ApplicationController {
 
     @PostMapping("create/application")
     public ResponseEntity<Application> create(@RequestBody ApplicationDTO dto){
-       dto.setSource("сайт");
+       dto.setSource("site");
        return new ResponseEntity<>(applicationService.create(dto), HttpStatus.OK);
     }
     @PostMapping("create/application/admin")

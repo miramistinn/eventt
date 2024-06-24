@@ -37,7 +37,6 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private Set<Roles> roles = new HashSet<>();
     private LocalDateTime dateOfCreated;
-
     @PrePersist//указывается что метод выаолняется перед сохранением сущности
     private void init() {
         dateOfCreated = LocalDateTime.now();

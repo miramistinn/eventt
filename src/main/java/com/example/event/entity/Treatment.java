@@ -22,11 +22,18 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "comments")
+    private String comments;
     @Column(name = "status")
     private String status;
+    @Column(name = "source")
+    private String source;
     @Column(name = "schedule")
     private String schesule;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
-            mappedBy = "treatment")//тип олл для того чтобы при удалении товара удалялись и фото сразу + при сохарнении круто
-    private List<Smeta> smeta= new ArrayList<>();
+    @Column(name = "application_id")
+    private Long application_id;
 }

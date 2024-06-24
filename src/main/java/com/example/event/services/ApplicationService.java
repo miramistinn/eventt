@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -46,7 +47,10 @@ public class ApplicationService {
 
 
     public List<Application> readAllApplication() {
-        return applicationRepository.findAll();
+        List<Application> allApplications = applicationRepository.findAll();
+        return allApplications.stream()
+                .filter(app -> app.getStatus().equals("new"))
+                .collect(Collectors.toList());
     }
 
     public List<Application> readByEmail() {

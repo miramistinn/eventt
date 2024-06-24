@@ -8,4 +8,5 @@ import java.nio.file.FileStore;
 
 @Repository
 public interface RejectedRepository extends JpaRepository<Rejected, Long> {
+
 }
