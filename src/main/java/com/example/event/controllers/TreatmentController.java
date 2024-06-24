@@ -37,7 +37,7 @@ public class TreatmentController {
 
     @GetMapping("application/closed/readAll")
     public ResponseEntity<List<Treatment>> readAllclosed(){
-        System.out.println("пришло на сервер");
+        System.out.println("пришло на сервер zxc");
         return new ResponseEntity<>(treatmentService.closed(), HttpStatus.OK);
     }
     @GetMapping("/treatment/read")
